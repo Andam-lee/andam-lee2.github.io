@@ -1,0 +1,1015 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lee Jeong-min — Photojournalist</title>
+    <meta name="description" content="Lee Jeong-min photojournalism portfolio — Editorial, Documentary, and Sports Photography." />
+    <meta property="og:title" content="Lee Jeong-min — Photojournalist" />
+    <meta property="og:description" content="Lee Jeong-min photojournalism portfolio — Editorial, Documentary, and Sports Photography." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Google Fonts: Geist 400 and 500 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&display=swap" rel="stylesheet" />
+
+    <style>
+      :root {
+        --ink: #0b1013;
+        --panel: rgba(14, 19, 23, 0.84);
+        --line: rgba(255, 255, 255, 0.08);
+        --hover: rgba(255, 255, 255, 0.065);
+        --text: #ffffff;
+        --soft: rgba(255, 255, 255, 0.74);
+        --muted: rgba(255, 255, 255, 0.60);
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        --morph: 0.5s;
+      }
+
+      /* Reset */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: var(--ink);
+        color: var(--text);
+        font-family: "Geist", "Inter", system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        background: none;
+        border: none;
+        padding: 0;
+        font: inherit;
+        color: inherit;
+        cursor: pointer;
+      }
+
+      img {
+        display: block;
+      }
+
+      :focus-visible {
+        outline: 2px solid #fff;
+        outline-offset: 3px;
+        border-radius: 6px;
+      }
+
+      /* Hero Section */
+      .hero {
+        position: relative;
+        height: 100vh;
+        height: 100svh;
+        min-height: 560px;
+        overflow: hidden;
+        isolation: isolate;
+      }
+
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        background: #1b2a30;
+        animation: heroIn 2.4s var(--ease) both;
+      }
+
+      .hero-slide {
+        position: absolute;
+        inset: 0;
+        background-position: center 45%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 0;
+        will-change: opacity;
+      }
+
+      .hero-slide.is-active {
+        opacity: 1;
+        z-index: 2;
+      }
+
+      .hero-slide.is-prev {
+        opacity: 1;
+        z-index: 1;
+      }
+
+      @keyframes heroIn {
+        from {
+          transform: scale(1.08);
+          filter: brightness(0.6);
+        }
+        to {
+          transform: scale(1);
+          filter: brightness(1);
+        }
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background:
+          linear-gradient(to bottom, rgba(6, 10, 12, 0.35) 0%, rgba(6, 10, 12, 0) 22%),
+          linear-gradient(to top, rgba(6, 9, 11, 0.8) 0%, rgba(6, 9, 11, 0.25) 30%, rgba(6, 9, 11, 0) 55%);
+      }
+
+      /* Hero Popcorn Text Center */
+      .hero-center {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        z-index: 5;
+        padding: 0 clamp(16px, 4vw, 48px);
+      }
+
+      .hero-center > * {
+        pointer-events: auto;
+      }
+
+      /* Header */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        background: linear-gradient(to bottom, rgba(11, 16, 19, 0.85) 0%, rgba(11, 16, 19, 0) 100%);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      }
+
+      .bar {
+        height: 76px;
+        padding: 0 clamp(20px, 3.4vw, 52px);
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+      }
+
+      /* Logo */
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        justify-self: start;
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-decoration: none;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-2px);
+        transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .logo.visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      .logo.visible:hover {
+        opacity: 0.75;
+      }
+
+      /* Desktop Nav */
+      .desktop-nav {
+        animation: fadeIn 0.9s ease 0.45s backwards;
+        /* Opacity only - no transform on nav so header remains containing block */
+      }
+
+      .links {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .trigger,
+      .plain-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 0;
+        font-size: 14.5px;
+        color: var(--soft);
+        transition: color 0.25s ease;
+      }
+
+      .trigger:hover,
+      .trigger[aria-expanded="true"],
+      .plain-link:hover {
+        color: #ffffff;
+      }
+
+      .chevron {
+        display: block;
+        width: 8px;
+        height: 5px;
+        transition: transform 0.35s var(--ease);
+      }
+
+      .trigger[aria-expanded="true"] .chevron {
+        transform: rotate(180deg);
+      }
+
+      /* Actions */
+      .actions {
+        justify-self: end;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        animation: fadeDown 0.9s var(--ease) 0.55s backwards;
+      }
+
+      .cta {
+        height: 32px;
+        padding: 0 15px;
+        border-radius: 999px;
+        background: #ffffff;
+        color: #0b0f12;
+        font-size: 14px;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.25s ease, transform 0.25s ease;
+      }
+
+      .cta:hover {
+        background: #e9eef0;
+        transform: translateY(-1px);
+      }
+
+      @keyframes fadeDown {
+        from {
+          opacity: 0;
+          transform: translateY(-8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* Morphing Dropdown Container */
+      .dd {
+        --x: 0px;
+        --w: 400px;
+        --h: 300px;
+        --s: 0.97;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        width: var(--w);
+        height: var(--h);
+        transform: translateX(var(--x)) scale(var(--s));
+        transform-origin: 50% 0;
+        opacity: 0;
+        pointer-events: none;
+        border-radius: 16px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        box-shadow: 0 30px 70px -25px rgba(0, 0, 0, 0.65), 0 2px 10px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(22px) saturate(140%);
+        -webkit-backdrop-filter: blur(22px) saturate(140%);
+        overflow: hidden;
+        transition: transform var(--morph) var(--ease), width var(--morph) var(--ease), height var(--morph) var(--ease), opacity 0.3s ease;
+      }
+
+      .dd.open {
+        --s: 1;
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .dd.instant {
+        transition: opacity 0.3s ease, transform var(--morph) var(--ease);
+      }
+
+      .dd.instant.snap {
+        transition: none;
+      }
+
+      /* Panels */
+      .panel {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        visibility: hidden;
+        filter: blur(8px);
+        transform: translateX(0);
+        transition: opacity 0.26s ease, transform var(--morph) var(--ease), filter 0.4s ease, visibility 0s linear var(--morph);
+      }
+
+      .panel[data-state="exit-left"] {
+        transform: translateX(-56px);
+      }
+
+      .panel[data-state="exit-right"] {
+        transform: translateX(56px);
+      }
+
+      .panel[data-state="active"] {
+        opacity: 1;
+        visibility: visible;
+        filter: blur(0);
+        transform: translateX(0);
+        transition: opacity 0.36s ease 0.06s, transform var(--morph) var(--ease), filter 0.45s ease 0.04s, visibility 0s;
+      }
+
+      .panel.snap {
+        transition: none !important;
+      }
+
+      /* Panel A: Discover / Editorial */
+      #p-discover {
+        width: 720px;
+        height: 380px;
+        display: grid;
+        grid-template-columns: 310px 1fr;
+      }
+
+      .d-list {
+        display: flex;
+        flex-direction: column;
+        padding: 8px;
+        gap: 2px;
+        height: 100%;
+      }
+
+      .d-item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 4px 12px;
+        border-radius: 10px;
+        transition: background 0.3s ease;
+      }
+
+      .d-item.is-active {
+        background: var(--hover);
+      }
+
+      .d-item strong {
+        font-size: 15px;
+        font-weight: 500;
+        margin-bottom: 4px;
+      }
+
+      .d-item span {
+        font-size: 13px;
+        line-height: 1.42;
+        color: var(--muted);
+      }
+
+      .d-media {
+        position: relative;
+        overflow: hidden;
+        border-radius: 0 15px 15px 0;
+      }
+
+      .d-media::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 70px;
+        background: linear-gradient(to right, rgba(14, 19, 23, 0.55), rgba(14, 19, 23, 0));
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      .d-media img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transform: scale(1.06);
+        filter: blur(10px);
+        transition: opacity 0.6s ease, transform 0.9s var(--ease), filter 0.6s ease;
+      }
+
+      .d-media img.is-active {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+        z-index: 1;
+      }
+
+      /* Panel B: Journeys / Other works */
+      #p-journeys {
+        width: 480px;
+        height: 320px;
+        padding: 7px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 7px;
+      }
+
+      .card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 14px;
+        isolation: isolate;
+      }
+
+      .card img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -2;
+        transition: transform 0.9s var(--ease), filter 0.5s ease;
+      }
+
+      .card:hover img,
+      .card:focus-visible img {
+        transform: scale(1.05);
+        filter: brightness(1.08);
+      }
+
+      .card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background: linear-gradient(to top, rgba(8, 11, 13, 0.88) 0%, rgba(8, 11, 13, 0.35) 38%, rgba(8, 11, 13, 0) 60%);
+      }
+
+      .card strong {
+        font-size: 15.5px;
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+
+      .card span {
+        font-size: 13px;
+        line-height: 1.42;
+        color: var(--muted);
+      }
+
+      /* Panel C: Regions */
+      #p-regions {
+        width: 232px;
+        height: 218px;
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .r-link {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+        border-radius: 9px;
+        font-size: 15px;
+        transition: background 0.25s ease;
+      }
+
+      .r-link:hover,
+      .r-link:focus-visible {
+        background: var(--hover);
+      }
+
+      /* Mobile styles */
+      .menu-btn {
+        display: none;
+        width: 36px;
+        height: 32px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s ease;
+      }
+
+      .menu-btn:hover {
+        background: rgba(255, 255, 255, 0.18);
+      }
+
+      .sheet {
+        position: absolute;
+        top: 68px;
+        left: 12px;
+        right: 12px;
+        padding: 10px;
+        border-radius: 16px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        backdrop-filter: blur(22px) saturate(140%);
+        -webkit-backdrop-filter: blur(22px) saturate(140%);
+        max-height: calc(100svh - 90px);
+        overflow-y: auto;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-6px) scale(0.98);
+        transform-origin: 50% 0;
+        transition: opacity 0.3s ease, transform 0.45s var(--ease), visibility 0s linear 0.45s;
+      }
+
+      .sheet.open {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: opacity 0.3s ease, transform 0.45s var(--ease), visibility 0s;
+      }
+
+      .sheet h3 {
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 10px 12px 6px;
+      }
+
+      .sheet a {
+        display: block;
+        padding: 10px 12px;
+        border-radius: 9px;
+        font-size: 15px;
+        transition: background 0.2s ease;
+      }
+
+      .sheet a:hover,
+      .sheet a:focus-visible {
+        background: var(--hover);
+      }
+
+      @media (max-width: 860px) {
+        .bar {
+          grid-template-columns: 1fr auto;
+        }
+        .desktop-nav {
+          display: none;
+        }
+        .menu-btn {
+          display: inline-flex;
+        }
+      }
+
+      @media (min-width: 861px) {
+        .sheet {
+          display: none;
+        }
+      }
+
+      /* Accessibility & Reduced Motion */
+      @media (prefers-reduced-motion: reduce) {
+        :root {
+          --morph: 0.01s;
+        }
+        *, *::before, *::after {
+          animation-duration: 0.01s !important;
+          animation-delay: 0s !important;
+          transition-duration: 0.01s !important;
+        }
+        .panel,
+        .d-media img {
+          filter: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Global Header Bar -->
+    <header class="header" id="header">
+      <div class="bar">
+        <a href="#" class="logo" id="site-logo" aria-label="Home" title="Home">
+          <span>Lee Jeong-min</span>
+        </a>
+
+          <!-- Centre Desktop Nav -->
+          <nav class="desktop-nav" id="nav" aria-label="Main">
+            <ul class="links">
+              <li>
+                <button class="trigger" data-menu="discover" aria-expanded="false">
+                  <span>Editorial</span>
+                  <svg class="chevron" width="8" height="5" viewBox="0 0 8 5" fill="none" aria-hidden="true">
+                    <path d="M1 1l3 3 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </li>
+              <li>
+                <button class="trigger" data-menu="journeys" aria-expanded="false">
+                  <span>Other works</span>
+                  <svg class="chevron" width="8" height="5" viewBox="0 0 8 5" fill="none" aria-hidden="true">
+                    <path d="M1 1l3 3 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </li>
+              <li>
+                <button class="trigger" data-menu="regions" aria-expanded="false">
+                  <span>About Me</span>
+                  <svg class="chevron" width="8" height="5" viewBox="0 0 8 5" fill="none" aria-hidden="true">
+                    <path d="M1 1l3 3 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </li>
+            </ul>
+
+            <!-- Dropdown Container -->
+            <div class="dd" id="dd">
+              <!-- Panel A: Discover -->
+              <div class="panel" id="p-discover" data-panel="discover">
+                <div class="d-list">
+                  <a class="d-item is-active" href="#voices-of-the-street" data-img="0">
+                    <strong>Voices of the street</strong>
+                    <span>Documenting the Pulse of Public Outcry</span>
+                  </a>
+                  <a class="d-item" href="#sports-editorial" data-img="1">
+                    <strong>Sports Editorial: Track and Field</strong>
+                    <span>High-speed motion, decisive plays, and live competition coverage.</span>
+                  </a>
+                  <a class="d-item" href="#disaster-coverage" data-img="2">
+                    <strong>Aftermath & Impact: Disaster Coverage</strong>
+                    <span>Documenting the immediate fallout of accidents and structural blazes.</span>
+                  </a>
+                  <a class="d-item" href="#public-events" data-img="3">
+                    <strong>Public Events & Festivals</strong>
+                    <span>Editorial coverage of public gatherings, cultural festivals, and large-scale public events.</span>
+                  </a>
+                </div>
+                <div class="d-media" aria-hidden="true">
+                  <img class="is-active" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260928_051509_384c49d8-b37c-49a7-9180-a06ad914ec24.png" alt="" />
+                  <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260928_051509_bf51abc3-090e-459f-8066-8f0cdd0c36b9.png" alt="" />
+                  <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260928_051509_c4fa86ad-842a-41c9-8cff-a70068ac1aa3.png" alt="" />
+                  <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260928_051511_ab19ff38-a140-442d-b2e7-82e3431bf3b6.png" alt="" />
+                </div>
+              </div>
+
+              <!-- Panel B: Journeys / Other works -->
+              <div class="panel" id="p-journeys" data-panel="journeys">
+                <a class="card" href="#avian-life">
+                  <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260928_051510_400ed870-8ffb-4030-b267-2b003780a5e3.png" alt="Avian Life: Wild Birds" />
+                  <strong>Avian Life: Wild Birds</strong>
+                  <span>Field documentation and behavioral observations of wild birds.</span>
+                </a>
+                <a class="card" href="#videos">
+                  <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260928_051510_3d88d3aa-ac8a-4e80-b70b-0da5523138cf.png" alt="Videos" />
+                  <strong>Videos</strong>
+                  <span>Live performance recording, commercial product video production, and camera assistant work.</span>
+                </a>
+              </div>
+
+              <!-- Panel C: Regions / About Me -->
+              <div class="panel" id="p-regions" data-panel="regions">
+                <a class="r-link" href="#about-me">About Me</a>
+                <a class="r-link" href="#capabilities">Capabilities</a>
+                <a class="r-link" href="#careers">Careers</a>
+                <a class="r-link" href="#contact">Contact</a>
+              </div>
+            </div>
+          </nav>
+
+          <!-- Right Actions -->
+          <div class="actions">
+            <button class="menu-btn" aria-label="Open menu" aria-expanded="false">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M2 5.5h12M2 10.5h12" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Sheet -->
+        <div class="sheet" id="sheet">
+          <div class="sheet-group">
+            <h3>Editorial</h3>
+            <a href="#voices-of-the-street">Voices of the street</a>
+            <a href="#sports-editorial">Sports Editorial: Track and Field</a>
+            <a href="#disaster-coverage">Aftermath & Impact: Disaster Coverage</a>
+            <a href="#public-events">Public Events & Festivals</a>
+          </div>
+          <div class="sheet-group">
+            <h3>Other works</h3>
+            <a href="#avian-life">Avian Life: Wild Birds</a>
+            <a href="#videos">Videos</a>
+          </div>
+          <div class="sheet-group">
+            <h3>About Me</h3>
+            <a href="#about-me">About Me</a>
+            <a href="#capabilities">Capabilities</a>
+            <a href="#careers">Careers</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </header>
+
+    <!-- App Root Container -->
+    <div id="root"></div>
+
+    <!-- JavaScript Behaviour in an IIFE -->
+    <script>
+      (function () {
+        const PAD = 20;
+        const header = document.getElementById('header');
+        const nav = document.getElementById('nav');
+        const dd = document.getElementById('dd');
+        const panels = Array.from(dd.querySelectorAll('.panel'));
+        const triggers = Array.from(document.querySelectorAll('.desktop-nav .trigger'));
+        const storyLink = document.getElementById('story-link');
+        const menuBtn = document.querySelector('.menu-btn');
+        const sheet = document.getElementById('sheet');
+        const sheetLinks = sheet ? sheet.querySelectorAll('a') : [];
+
+        let current = null;
+        let closeTimer = null;
+
+        function place(id) {
+          const panel = document.getElementById('p-' + id);
+          if (!panel) return;
+          const panelWidth = panel.offsetWidth;
+          const panelHeight = panel.offsetHeight;
+          const trigger = document.querySelector(`.trigger[data-menu="${id}"]`);
+          if (!trigger) return;
+
+          const triggerRect = trigger.getBoundingClientRect();
+          const headerRect = header.getBoundingClientRect();
+          const parentLeft = (dd.offsetParent || header).getBoundingClientRect().left;
+
+          let targetX = triggerRect.left - PAD;
+          const minX = headerRect.left + 12;
+          const maxX = headerRect.right - panelWidth - 12;
+
+          if (targetX < minX) targetX = minX;
+          if (targetX > maxX) targetX = maxX;
+
+          const x = targetX - parentLeft;
+
+          dd.style.setProperty('--x', `${x}px`);
+          dd.style.setProperty('--w', `${panelWidth}px`);
+          dd.style.setProperty('--h', `${panelHeight}px`);
+        }
+
+        function open(id) {
+          clearTimeout(closeTimer);
+          if (current === id) return;
+
+          const oldId = current;
+          const newPanel = document.getElementById('p-' + id);
+          if (!newPanel) return;
+
+          if (!oldId) {
+            // FIRST OPEN (nothing open)
+            dd.classList.add('instant', 'snap');
+            panels.forEach(function (p) {
+              p.classList.add('snap');
+              p.removeAttribute('data-state');
+            });
+
+            place(id);
+            void dd.offsetWidth; // force a reflow
+
+            dd.classList.remove('snap');
+            panels.forEach(function (p) {
+              p.classList.remove('snap');
+            });
+            dd.classList.add('open');
+
+            requestAnimationFrame(function () {
+              dd.classList.remove('instant');
+            });
+          } else {
+            // SWITCH (another menu open)
+            const order = ['discover', 'journeys', 'regions'];
+            const oldIndex = order.indexOf(oldId);
+            const newIndex = order.indexOf(id);
+            const dir = newIndex > oldIndex ? 1 : -1;
+
+            const oldPanel = document.getElementById('p-' + oldId);
+            if (oldPanel) {
+              oldPanel.setAttribute('data-state', dir > 0 ? 'exit-left' : 'exit-right');
+            }
+
+            newPanel.classList.add('snap');
+            newPanel.setAttribute('data-state', dir > 0 ? 'exit-right' : 'exit-left');
+            void newPanel.offsetWidth; // force a reflow
+            newPanel.classList.remove('snap');
+
+            place(id);
+          }
+
+          newPanel.setAttribute('data-state', 'active');
+          triggers.forEach(function (btn) {
+            const isTarget = btn.getAttribute('data-menu') === id;
+            btn.setAttribute('aria-expanded', isTarget ? 'true' : 'false');
+          });
+          current = id;
+        }
+
+        function close() {
+          clearTimeout(closeTimer);
+          dd.classList.remove('open');
+          if (current) {
+            const curPanel = document.getElementById('p-' + current);
+            if (curPanel) curPanel.removeAttribute('data-state');
+          }
+          triggers.forEach(function (btn) {
+            btn.setAttribute('aria-expanded', 'false');
+          });
+          current = null;
+        }
+
+        function scheduleClose(ms) {
+          if (ms === undefined) ms = 140;
+          clearTimeout(closeTimer);
+          closeTimer = setTimeout(close, ms);
+        }
+
+        // Trigger event handlers
+        triggers.forEach(function (trigger) {
+          const menu = trigger.getAttribute('data-menu');
+          trigger.addEventListener('pointerenter', function (e) {
+            if (e.pointerType === 'mouse') {
+              open(menu);
+            }
+          });
+          trigger.addEventListener('click', function () {
+            if (current === menu) {
+              close();
+            } else {
+              open(menu);
+            }
+          });
+        });
+
+        if (storyLink) {
+          storyLink.addEventListener('pointerenter', function (e) {
+            if (e.pointerType === 'mouse') {
+              scheduleClose(60);
+            }
+          });
+        }
+
+        if (nav) {
+          nav.addEventListener('pointerenter', function (e) {
+            if (e.pointerType === 'mouse') {
+              clearTimeout(closeTimer);
+            }
+          });
+          nav.addEventListener('pointerleave', function (e) {
+            if (e.pointerType === 'mouse') {
+              scheduleClose(140);
+            }
+          });
+          nav.addEventListener('focusout', function (e) {
+            if (!nav.contains(e.relatedTarget)) {
+              scheduleClose(0);
+            }
+          });
+        }
+
+        // Keyboard Escape
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') {
+            const prevCurrent = current;
+            close();
+            if (prevCurrent) {
+              const trigger = document.querySelector(`.trigger[data-menu="${prevCurrent}"]`);
+              if (trigger) trigger.focus();
+            }
+            closeSheet();
+          }
+        });
+
+        // Pointerdown outside nav
+        document.addEventListener('pointerdown', function (e) {
+          if (nav && !nav.contains(e.target)) {
+            close();
+          }
+        });
+
+        // Window resize
+        window.addEventListener('resize', function () {
+          if (current) {
+            place(current);
+          }
+        });
+
+        // Discover panel item hover/focus
+        const discoverPanel = document.getElementById('p-discover');
+        if (discoverPanel) {
+          const dItems = discoverPanel.querySelectorAll('.d-item');
+          const dImages = discoverPanel.querySelectorAll('.d-media img');
+
+          function activateDiscoverItem(item) {
+            dItems.forEach(function (it) {
+              it.classList.toggle('is-active', it === item);
+            });
+            const idx = item.getAttribute('data-img');
+            dImages.forEach(function (img, i) {
+              img.classList.toggle('is-active', String(i) === idx);
+            });
+          }
+
+          dItems.forEach(function (item) {
+            item.addEventListener('pointerenter', function (e) {
+              if (e.pointerType === 'mouse' || !e.pointerType) {
+                activateDiscoverItem(item);
+              }
+            });
+            item.addEventListener('focus', function () {
+              activateDiscoverItem(item);
+            });
+          });
+        }
+
+        // Mobile Sheet logic
+        function closeSheet() {
+          if (sheet && sheet.classList.contains('open')) {
+            sheet.classList.remove('open');
+            if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+          }
+        }
+
+        function toggleSheet() {
+          if (!sheet) return;
+          const willOpen = !sheet.classList.contains('open');
+          sheet.classList.toggle('open', willOpen);
+          if (menuBtn) menuBtn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        }
+
+        if (menuBtn) {
+          menuBtn.addEventListener('click', toggleSheet);
+        }
+
+        sheetLinks.forEach(function (link) {
+          link.addEventListener('click', closeSheet);
+        });
+
+        // Close dropdown when any link inside dd is clicked
+        if (dd) {
+          dd.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+              close();
+            });
+          });
+        }
+
+        // Logo fade in/out based on page route
+        const siteLogo = document.getElementById('site-logo');
+        function updateLogoVisibility() {
+          if (!siteLogo) return;
+          const hash = window.location.hash.replace(/^#\/?/, '').trim();
+          const isSubpage = Boolean(hash && hash !== 'home');
+          if (isSubpage) {
+            siteLogo.classList.add('visible');
+          } else {
+            siteLogo.classList.remove('visible');
+          }
+        }
+
+        window.addEventListener('hashchange', updateLogoVisibility);
+        updateLogoVisibility();
+      })();
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
