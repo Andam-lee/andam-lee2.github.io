@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowLeft, Cpu } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import EditableText from "../components/EditableText";
 
 export default function CapabilitiesPage() {
@@ -29,7 +29,7 @@ export default function CapabilitiesPage() {
       </div>
 
       {/* Header */}
-      <header className="mb-12">
+      <header>
         <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight">
           <EditableText
             id="title_capabilities"
@@ -39,38 +39,6 @@ export default function CapabilitiesPage() {
           />
         </h1>
       </header>
-
-      {/* Blank Page Staging Canvas */}
-      <div className="relative border border-dashed border-white/15 rounded-2xl p-12 md:p-24 flex flex-col items-center justify-center text-center bg-white/[0.02]">
-        <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-6 text-white/40">
-          <Cpu className="w-8 h-8" />
-        </div>
-        <h2 className="text-xl font-medium text-white/90 mb-2">
-          <EditableText
-            id="canvas_capabilities_title"
-            defaultText="Capabilities Page"
-            section="capabilities"
-            as="span"
-          />
-        </h2>
-        <div className="text-sm text-white/50 max-w-md mb-8 leading-relaxed">
-          <EditableText
-            id="canvas_capabilities_desc"
-            defaultText="Specialized in high-speed telephoto sports tracking, breaking news rapid field transmission, hostile-environment field awareness, and color-calibrated editorial printing workflows."
-            section="capabilities"
-            multiline={true}
-            as="p"
-          />
-        </div>
-        <div className="flex items-center gap-3">
-          <a
-            href="#"
-            className="px-5 py-2.5 rounded-full bg-white text-black font-medium text-sm hover:bg-neutral-200 transition-colors"
-          >
-            Back to Home
-          </a>
-        </div>
-      </div>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowLeft, Trophy } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import EditableText from "../components/EditableText";
 
 export default function SportsEditorialPage() {
@@ -17,19 +17,12 @@ export default function SportsEditorialPage() {
         <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-white/40">
           <span>Editorial</span>
           <span>/</span>
-          <span className="text-white/80">
-            <EditableText
-              id="title_sports_breadcrumb"
-              defaultText="Sports Editorial"
-              section="sports"
-              as="span"
-            />
-          </span>
+          <span className="text-white/80">Sports Editorial</span>
         </div>
       </div>
 
       {/* Header */}
-      <header className="mb-12">
+      <header>
         <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight">
           <EditableText
             id="title_sports"
@@ -39,38 +32,6 @@ export default function SportsEditorialPage() {
           />
         </h1>
       </header>
-
-      {/* Blank Page Staging Canvas */}
-      <div className="relative border border-dashed border-white/15 rounded-2xl p-12 md:p-24 flex flex-col items-center justify-center text-center bg-white/[0.02]">
-        <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-6 text-white/40">
-          <Trophy className="w-8 h-8" />
-        </div>
-        <h2 className="text-xl font-medium text-white/90 mb-2">
-          <EditableText
-            id="canvas_sports_title"
-            defaultText="Sports Editorial Page"
-            section="sports"
-            as="span"
-          />
-        </h2>
-        <div className="text-sm text-white/50 max-w-md mb-8 leading-relaxed">
-          <EditableText
-            id="canvas_sports_desc"
-            defaultText="High-speed motion, decisive plays, and live competition coverage. Capturing the split-second triumphs, agony, and raw discipline of competitive athletes."
-            section="sports"
-            multiline={true}
-            as="p"
-          />
-        </div>
-        <div className="flex items-center gap-3">
-          <a
-            href="#"
-            className="px-5 py-2.5 rounded-full bg-white text-black font-medium text-sm hover:bg-neutral-200 transition-colors"
-          >
-            Back to Home
-          </a>
-        </div>
-      </div>
     </div>
   );
 }
