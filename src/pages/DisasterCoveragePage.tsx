@@ -1,5 +1,6 @@
 import React from "react";
-import { ArrowLeft, Flame } from "lucide-react";
+import { ArrowLeft, AlertTriangle } from "lucide-react";
+import EditableText from "../components/EditableText";
 
 export default function DisasterCoveragePage() {
   return (
@@ -16,30 +17,51 @@ export default function DisasterCoveragePage() {
         <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-white/40">
           <span>Editorial</span>
           <span>/</span>
-          <span className="text-white/80">Disaster Coverage</span>
+          <span className="text-white/80">
+            <EditableText
+              id="title_disaster_breadcrumb"
+              defaultText="Disaster Coverage"
+              section="disaster"
+              as="span"
+            />
+          </span>
         </div>
       </div>
 
       {/* Header */}
       <header className="mb-12">
         <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight">
-          Aftermath & Impact: Disaster Coverage
+          <EditableText
+            id="title_disaster"
+            defaultText="Aftermath & Impact: Disaster Coverage"
+            section="disaster"
+            as="span"
+          />
         </h1>
       </header>
 
       {/* Blank Page Staging Canvas */}
       <div className="relative border border-dashed border-white/15 rounded-2xl p-12 md:p-24 flex flex-col items-center justify-center text-center bg-white/[0.02]">
         <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-6 text-white/40">
-          <Flame className="w-8 h-8" />
+          <AlertTriangle className="w-8 h-8" />
         </div>
         <h2 className="text-xl font-medium text-white/90 mb-2">
-          Disaster Coverage Page
+          <EditableText
+            id="canvas_disaster_title"
+            defaultText="Disaster Coverage Page"
+            section="disaster"
+            as="span"
+          />
         </h2>
-        <p className="text-sm text-white/50 max-w-md mb-8 leading-relaxed">
-          This dedicated page has been created for field disaster and emergency
-          coverage. Ready for on-scene photo archives, chronological logs, and
-          first-responder reports.
-        </p>
+        <div className="text-sm text-white/50 max-w-md mb-8 leading-relaxed">
+          <EditableText
+            id="canvas_disaster_desc"
+            defaultText="Documenting the immediate fallout of accidents, natural crises, and structural emergencies with journalistic precision and empathetic restraint."
+            section="disaster"
+            multiline={true}
+            as="p"
+          />
+        </div>
         <div className="flex items-center gap-3">
           <a
             href="#"

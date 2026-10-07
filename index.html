@@ -41,6 +41,8 @@
         font-family: "Geist", "Inter", system-ui, sans-serif;
         -webkit-font-smoothing: antialiased;
         overflow-x: hidden;
+        overflow-y: auto;
+        min-height: 100%;
       }
 
       a {
@@ -92,7 +94,7 @@
         background-size: cover;
         background-repeat: no-repeat;
         opacity: 0;
-        transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: opacity 0.4s ease;
         z-index: 0;
         will-change: opacity;
       }
@@ -234,6 +236,18 @@
         transform: rotate(180deg);
       }
 
+      .trigger.admin-nav-editable {
+        position: relative;
+      }
+      .trigger.admin-nav-editable::after {
+        content: "";
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        right: 0;
+        border-bottom: 1px dashed rgba(251, 191, 36, 0.6);
+      }
+
       /* Actions */
       .actions {
         justify-self: end;
@@ -355,17 +369,17 @@
 
       /* Panel A: Discover / Editorial */
       #p-discover {
-        width: 720px;
-        height: 380px;
+        width: 880px;
+        height: 520px;
         display: grid;
-        grid-template-columns: 310px 1fr;
+        grid-template-columns: 460px 1fr;
       }
 
       .d-list {
         display: flex;
         flex-direction: column;
-        padding: 8px;
-        gap: 2px;
+        padding: 10px;
+        gap: 4px;
         height: 100%;
       }
 
@@ -374,9 +388,9 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 4px 12px;
-        border-radius: 10px;
-        transition: background 0.3s ease;
+        padding: 8px 16px;
+        border-radius: 12px;
+        transition: background 0.25s ease;
       }
 
       .d-item.is-active {
@@ -387,11 +401,12 @@
         font-size: 15px;
         font-weight: 500;
         margin-bottom: 4px;
+        color: #ffffff;
       }
 
       .d-item span {
         font-size: 13px;
-        line-height: 1.42;
+        line-height: 1.45;
         color: var(--muted);
       }
 
@@ -667,27 +682,32 @@
                     <strong>Sports Editorial: Track and Field</strong>
                     <span>High-speed motion, decisive plays, and live competition coverage.</span>
                   </a>
-                  <a class="d-item" href="#disaster-coverage" data-img="2">
+                  <a class="d-item" href="#korea-military-academy" data-img="2">
+                    <strong>Korea Military Academy: Institutional Documentation</strong>
+                    <span>Official coverage of cadet field training, ceremonial events, and daily academy life.</span>
+                  </a>
+                  <a class="d-item" href="#disaster-coverage" data-img="3">
                     <strong>Aftermath & Impact: Disaster Coverage</strong>
                     <span>Documenting the immediate fallout of accidents and structural blazes.</span>
                   </a>
-                  <a class="d-item" href="#public-events" data-img="3">
+                  <a class="d-item" href="#public-events" data-img="4">
                     <strong>Public Events & Festivals</strong>
                     <span>Editorial coverage of public gatherings, cultural festivals, and large-scale public events.</span>
                   </a>
                 </div>
                 <div class="d-media" aria-hidden="true">
-                  <img class="is-active" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260928_051509_384c49d8-b37c-49a7-9180-a06ad914ec24.png" alt="" />
-                  <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260928_051509_bf51abc3-090e-459f-8066-8f0cdd0c36b9.png" alt="" />
-                  <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260928_051509_c4fa86ad-842a-41c9-8cff-a70068ac1aa3.png" alt="" />
-                  <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260928_051511_ab19ff38-a140-442d-b2e7-82e3431bf3b6.png" alt="" />
+                  <img class="is-active" src="https://raw.githubusercontent.com/Andam-lee/Andam-lee.github.io/50761e295328a683de187fd0c6995edb0d317e45/R20251122_DBW-8.jpg" alt="Voices of the street" style="object-position: 18% 40%;" />
+                  <img src="https://cdn.jsdelivr.net/gh/Andam-lee/Lee-Jeong-min-GitHub-Upload@main/portfolio/20250621_R_1.jpg" alt="Sports Editorial" />
+                  <img src="https://cdn.jsdelivr.net/gh/Andam-lee/Lee-Jeong-min-GitHub-Upload@main/portfolio/IMG_0045.JPG" alt="Korea Military Academy" />
+                  <img src="https://cdn.jsdelivr.net/gh/Andam-lee/Lee-Jeong-min-GitHub-Upload@main/portfolio/R20251115_CAF-19.jpg" alt="Aftermath & Impact: Disaster Coverage" />
+                  <img src="https://cdn.jsdelivr.net/gh/Andam-lee/Lee-Jeong-min-GitHub-Upload@main/portfolio/R20251019_ADEX-28.jpg" alt="Public Events & Festivals" />
                 </div>
               </div>
 
               <!-- Panel B: Journeys / Other works -->
               <div class="panel" id="p-journeys" data-panel="journeys">
                 <a class="card" href="#avian-life">
-                  <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260928_051510_400ed870-8ffb-4030-b267-2b003780a5e3.png" alt="Avian Life: Wild Birds" />
+                  <img src="https://cdn.jsdelivr.net/gh/Andam-lee/Lee-Jeong-min-GitHub-Upload@main/portfolio/mhbr.jpg" alt="Avian Life: Wild Birds" />
                   <strong>Avian Life: Wild Birds</strong>
                   <span>Field documentation and behavioral observations of wild birds.</span>
                 </a>
@@ -724,6 +744,7 @@
             <h3>Editorial</h3>
             <a href="#voices-of-the-street">Voices of the street</a>
             <a href="#sports-editorial">Sports Editorial: Track and Field</a>
+            <a href="#korea-military-academy">Korea Military Academy: Institutional Documentation</a>
             <a href="#disaster-coverage">Aftermath & Impact: Disaster Coverage</a>
             <a href="#public-events">Public Events & Festivals</a>
           </div>

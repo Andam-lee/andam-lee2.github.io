@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowLeft, Trophy } from "lucide-react";
+import EditableText from "../components/EditableText";
 
 export default function SportsEditorialPage() {
   return (
@@ -16,14 +17,26 @@ export default function SportsEditorialPage() {
         <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-white/40">
           <span>Editorial</span>
           <span>/</span>
-          <span className="text-white/80">Sports Editorial</span>
+          <span className="text-white/80">
+            <EditableText
+              id="title_sports_breadcrumb"
+              defaultText="Sports Editorial"
+              section="sports"
+              as="span"
+            />
+          </span>
         </div>
       </div>
 
       {/* Header */}
       <header className="mb-12">
         <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight">
-          Sports Editorial: Track and Field
+          <EditableText
+            id="title_sports"
+            defaultText="Sports Editorial: Track and Field"
+            section="sports"
+            as="span"
+          />
         </h1>
       </header>
 
@@ -33,13 +46,22 @@ export default function SportsEditorialPage() {
           <Trophy className="w-8 h-8" />
         </div>
         <h2 className="text-xl font-medium text-white/90 mb-2">
-          Sports Editorial Page
+          <EditableText
+            id="canvas_sports_title"
+            defaultText="Sports Editorial Page"
+            section="sports"
+            as="span"
+          />
         </h2>
-        <p className="text-sm text-white/50 max-w-md mb-8 leading-relaxed">
-          This dedicated page has been created for Track and Field coverage.
-          Ready for action sports photography sets, athlete portraits, and match
-          chronicles.
-        </p>
+        <div className="text-sm text-white/50 max-w-md mb-8 leading-relaxed">
+          <EditableText
+            id="canvas_sports_desc"
+            defaultText="High-speed motion, decisive plays, and live competition coverage. Capturing the split-second triumphs, agony, and raw discipline of competitive athletes."
+            section="sports"
+            multiline={true}
+            as="p"
+          />
+        </div>
         <div className="flex items-center gap-3">
           <a
             href="#"

@@ -1,0 +1,62 @@
+{
+  "entities": {
+    "siteContent": {
+      "title": "Site Content",
+      "description": "Customizable text elements for the portfolio website.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique key or identifier for the content item."
+        },
+        "text": {
+          "type": "string",
+          "description": "The customized text content."
+        },
+        "section": {
+          "type": "string",
+          "description": "The category or section this text belongs to."
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp of the last update."
+        },
+        "updatedBy": {
+          "type": "string",
+          "description": "Admin email or UID who updated the content."
+        }
+      },
+      "required": ["id", "text", "updatedAt"]
+    },
+    "admin": {
+      "title": "Admin",
+      "description": "System administrator record.",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Administrator email address."
+        },
+        "role": {
+          "type": "string",
+          "description": "Administrator role level."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of creation."
+        }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "/site_content/{contentId}": {
+      "schema": "siteContent",
+      "description": "Collection of all customizable site text elements."
+    },
+    "/admins/{adminId}": {
+      "schema": "admin",
+      "description": "Collection of authorized administrators."
+    }
+  }
+}

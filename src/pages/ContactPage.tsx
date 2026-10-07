@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ArrowLeft, CheckCircle2, Send } from "lucide-react";
+import EditableText from "../components/EditableText";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -46,7 +47,12 @@ export default function ContactPage() {
       {/* Main Title only (no top tag, no subtitle) */}
       <header className="mb-10">
         <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white">
-          Contact
+          <EditableText
+            id="title_contact"
+            defaultText="Contact"
+            section="contact"
+            as="span"
+          />
         </h1>
       </header>
 

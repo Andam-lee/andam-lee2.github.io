@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import HomePage from "./pages/HomePage";
 import VoicesOfTheStreetPage from "./pages/VoicesOfTheStreetPage";
 import SportsEditorialPage from "./pages/SportsEditorialPage";
+import KoreaMilitaryAcademyPage from "./pages/KoreaMilitaryAcademyPage";
 import DisasterCoveragePage from "./pages/DisasterCoveragePage";
 import PublicEventsPage from "./pages/PublicEventsPage";
 import AvianLifePage from "./pages/AvianLifePage";
@@ -10,10 +11,45 @@ import AboutMePage from "./pages/AboutMePage";
 import CapabilitiesPage from "./pages/CapabilitiesPage";
 import CareersPage from "./pages/CareersPage";
 import ContactPage from "./pages/ContactPage";
+import { AdminProvider } from "./context/AdminContext";
+import AdminBar from "./components/AdminBar";
+import AdminLoginModal from "./components/AdminLoginModal";
+import AdminFooterButton from "./components/AdminFooterButton";
+import NavigationManager from "./components/NavigationManager";
 
 function parseHash(hash: string): string {
   const clean = hash.replace(/^#\/?/, "").trim();
   return clean || "home";
+}
+
+function PageContent({ currentRoute }: { currentRoute: string }) {
+  switch (currentRoute) {
+    case "voices-of-the-street":
+      return <VoicesOfTheStreetPage />;
+    case "sports-editorial":
+      return <SportsEditorialPage />;
+    case "korea-military-academy":
+      return <KoreaMilitaryAcademyPage />;
+    case "disaster-coverage":
+      return <DisasterCoveragePage />;
+    case "public-events":
+      return <PublicEventsPage />;
+    case "avian-life":
+      return <AvianLifePage />;
+    case "videos":
+      return <VideosPage />;
+    case "about-me":
+      return <AboutMePage />;
+    case "capabilities":
+      return <CapabilitiesPage />;
+    case "careers":
+      return <CareersPage />;
+    case "contact":
+      return <ContactPage />;
+    case "home":
+    default:
+      return <HomePage />;
+  }
 }
 
 export default function App() {
@@ -43,30 +79,13 @@ export default function App() {
     }
   }, [currentRoute]);
 
-  // Distinct page rendering for every individual category
-  switch (currentRoute) {
-    case "voices-of-the-street":
-      return <VoicesOfTheStreetPage />;
-    case "sports-editorial":
-      return <SportsEditorialPage />;
-    case "disaster-coverage":
-      return <DisasterCoveragePage />;
-    case "public-events":
-      return <PublicEventsPage />;
-    case "avian-life":
-      return <AvianLifePage />;
-    case "videos":
-      return <VideosPage />;
-    case "about-me":
-      return <AboutMePage />;
-    case "capabilities":
-      return <CapabilitiesPage />;
-    case "careers":
-      return <CareersPage />;
-    case "contact":
-      return <ContactPage />;
-    case "home":
-    default:
-      return <HomePage />;
-  }
+  return (
+    <AdminProvider>
+      <NavigationManager />
+      <PageContent currentRoute={currentRoute} />
+      <AdminBar />
+      <AdminLoginModal />
+      <AdminFooterButton />
+    </AdminProvider>
+  );
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowLeft, Feather } from "lucide-react";
+import EditableText from "../components/EditableText";
 
 export default function AvianLifePage() {
   return (
@@ -16,14 +17,26 @@ export default function AvianLifePage() {
         <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-white/40">
           <span>Other works</span>
           <span>/</span>
-          <span className="text-white/80">Avian Life: Wild Birds</span>
+          <span className="text-white/80">
+            <EditableText
+              id="title_avian_breadcrumb"
+              defaultText="Avian Life"
+              section="avian"
+              as="span"
+            />
+          </span>
         </div>
       </div>
 
       {/* Header */}
       <header className="mb-12">
         <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight">
-          Avian Life: Wild Birds
+          <EditableText
+            id="title_avian"
+            defaultText="Avian Life: Wild Birds"
+            section="avian"
+            as="span"
+          />
         </h1>
       </header>
 
@@ -33,13 +46,22 @@ export default function AvianLifePage() {
           <Feather className="w-8 h-8" />
         </div>
         <h2 className="text-xl font-medium text-white/90 mb-2">
-          Avian Life: Wild Birds Page
+          <EditableText
+            id="canvas_avian_title"
+            defaultText="Avian Life: Wild Birds Page"
+            section="avian"
+            as="span"
+          />
         </h2>
-        <p className="text-sm text-white/50 max-w-md mb-8 leading-relaxed">
-          This dedicated page has been created for wild bird photography and
-          field notes. Ready for high-resolution wildlife showcases and species
-          index.
-        </p>
+        <div className="text-sm text-white/50 max-w-md mb-8 leading-relaxed">
+          <EditableText
+            id="canvas_avian_desc"
+            defaultText="Field documentation and behavioral observations of wild birds. Telephoto habitat captures, migratory patterns, and seasonal ecology in natural preserves."
+            section="avian"
+            multiline={true}
+            as="p"
+          />
+        </div>
         <div className="flex items-center gap-3">
           <a
             href="#"

@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowLeft, User } from "lucide-react";
+import EditableText from "../components/EditableText";
 
 export default function AboutMePage() {
   return (
@@ -23,22 +24,37 @@ export default function AboutMePage() {
       {/* Header */}
       <header className="mb-12">
         <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight">
-          About Me
+          <EditableText
+            id="aboutme_title"
+            defaultText="About Me"
+            section="aboutme"
+            as="span"
+          />
         </h1>
       </header>
 
-      {/* Blank Page Staging Canvas */}
+      {/* Staging Canvas / Statement */}
       <div className="relative border border-dashed border-white/15 rounded-2xl p-12 md:p-24 flex flex-col items-center justify-center text-center bg-white/[0.02]">
         <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-6 text-white/40">
           <User className="w-8 h-8" />
         </div>
-        <h2 className="text-xl font-medium text-white/90 mb-2">
-          About Me Page
+        <h2 className="text-xl font-medium text-white/90 mb-3">
+          <EditableText
+            id="aboutme_headline"
+            defaultText="Lee Jeong-min — Independent Visual Documentarian"
+            section="aboutme"
+            as="span"
+          />
         </h2>
-        <p className="text-sm text-white/50 max-w-md mb-8 leading-relaxed">
-          This dedicated page has been created for your artist statement, personal
-          background, artist portraits, and editorial vision.
-        </p>
+        <div className="text-sm text-white/60 max-w-2xl mb-8 leading-relaxed">
+          <EditableText
+            id="aboutme_statement"
+            defaultText="Documenting human rights, societal friction, athletic endurance, and natural ecosystems through uncompromising photojournalism and editorial cinematography."
+            section="aboutme"
+            multiline={true}
+            as="p"
+          />
+        </div>
         <div className="flex items-center gap-3">
           <a
             href="#"

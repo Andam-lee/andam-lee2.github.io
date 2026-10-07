@@ -1,0 +1,41 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-\\.]+$');
+    }
+
+    function isValidSiteContent(data) {
+      return data.keys().hasAll(['id', 'text', 'updatedAt'])
+        && data.keys().hasOnly(['id', 'text', 'section', 'updatedAt', 'updatedBy'])
+        && data.id is string && data.id.size() > 0 && data.id.size() <= 128
+        && data.text is string && data.text.size() <= 50000
+        && (!('section' in data) || (data.section is string && data.section.size() <= 100))
+        && data.updatedAt is string && data.updatedAt.size() <= 64
+        && (!('updatedBy' in data) || (data.updatedBy is string && data.updatedBy.size() <= 256));
+    }
+
+    match /site_content/{contentId} {
+      allow read: if true;
+      allow create, update: if isSignedIn()
+        && isValidId(contentId)
+        && isValidSiteContent(request.resource.data);
+      allow delete: if isSignedIn() && isValidId(contentId);
+    }
+
+    match /admins/{adminId} {
+      allow read: if isSignedIn() && isValidId(adminId);
+      allow write: if isSignedIn() && isValidId(adminId);
+    }
+
+    match /test/{docId} {
+      allow read, write: if true;
+    }
+  }
+}

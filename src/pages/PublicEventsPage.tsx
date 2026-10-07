@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowLeft, Users } from "lucide-react";
+import EditableText from "../components/EditableText";
 
 export default function PublicEventsPage() {
   return (
@@ -16,14 +17,26 @@ export default function PublicEventsPage() {
         <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-white/40">
           <span>Editorial</span>
           <span>/</span>
-          <span className="text-white/80">Public Events & Festivals</span>
+          <span className="text-white/80">
+            <EditableText
+              id="title_events_breadcrumb"
+              defaultText="Public Events"
+              section="events"
+              as="span"
+            />
+          </span>
         </div>
       </div>
 
       {/* Header */}
       <header className="mb-12">
         <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight">
-          Public Events & Festivals
+          <EditableText
+            id="title_events"
+            defaultText="Public Events & Festivals"
+            section="events"
+            as="span"
+          />
         </h1>
       </header>
 
@@ -33,13 +46,22 @@ export default function PublicEventsPage() {
           <Users className="w-8 h-8" />
         </div>
         <h2 className="text-xl font-medium text-white/90 mb-2">
-          Public Events & Festivals Page
+          <EditableText
+            id="canvas_events_title"
+            defaultText="Public Events & Festivals Page"
+            section="events"
+            as="span"
+          />
         </h2>
-        <p className="text-sm text-white/50 max-w-md mb-8 leading-relaxed">
-          This dedicated page has been created for civic events and festival
-          editorial coverage. Ready for community photo collections and cultural
-          photo essays.
-        </p>
+        <div className="text-sm text-white/50 max-w-md mb-8 leading-relaxed">
+          <EditableText
+            id="canvas_events_desc"
+            defaultText="Editorial coverage of public gatherings, cultural celebrations, civic ceremonies, and large-scale public assemblies."
+            section="events"
+            multiline={true}
+            as="p"
+          />
+        </div>
         <div className="flex items-center gap-3">
           <a
             href="#"

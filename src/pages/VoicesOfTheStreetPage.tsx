@@ -1,5 +1,6 @@
 import React from "react";
-import { ArrowLeft, Camera, FileText } from "lucide-react";
+import { ArrowLeft, Camera } from "lucide-react";
+import EditableText from "../components/EditableText";
 
 export default function VoicesOfTheStreetPage() {
   return (
@@ -16,14 +17,26 @@ export default function VoicesOfTheStreetPage() {
         <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-white/40">
           <span>Editorial</span>
           <span>/</span>
-          <span className="text-white/80">Voices of the street</span>
+          <span className="text-white/80">
+            <EditableText
+              id="title_voices_breadcrumb"
+              defaultText="Voices of the street"
+              section="voices"
+              as="span"
+            />
+          </span>
         </div>
       </div>
 
       {/* Header */}
       <header className="mb-12">
         <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight">
-          Voices of the street
+          <EditableText
+            id="title_voices"
+            defaultText="Voices of the street"
+            section="voices"
+            as="span"
+          />
         </h1>
       </header>
 
@@ -33,13 +46,22 @@ export default function VoicesOfTheStreetPage() {
           <Camera className="w-8 h-8" />
         </div>
         <h2 className="text-xl font-medium text-white/90 mb-2">
-          Voices of the street Page
+          <EditableText
+            id="canvas_voices_title"
+            defaultText="Voices of the street Page"
+            section="voices"
+            as="span"
+          />
         </h2>
-        <p className="text-sm text-white/50 max-w-md mb-8 leading-relaxed">
-          This dedicated page has been created for the "Voices of the street"
-          series. Ready for photo galleries, documentary essays, and field
-          notes.
-        </p>
+        <div className="text-sm text-white/50 max-w-md mb-8 leading-relaxed">
+          <EditableText
+            id="canvas_voices_desc"
+            defaultText='This dedicated page has been created for the "Voices of the street" series. Ready for photo galleries, documentary essays, and field notes.'
+            section="voices"
+            multiline={true}
+            as="p"
+          />
+        </div>
         <div className="flex items-center gap-3">
           <a
             href="#"
