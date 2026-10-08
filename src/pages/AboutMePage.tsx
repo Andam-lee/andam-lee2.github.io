@@ -3,6 +3,7 @@ import { ArrowLeft, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import KineticTextGrid from "../components/KineticTextGrid";
 import EditableText from "../components/EditableText";
+import AboutInfiniteGallery from "../components/AboutInfiniteGallery";
 
 export default function AboutMePage() {
   const [showScrollDown, setShowScrollDown] = useState(false);
@@ -144,6 +145,9 @@ export default function AboutMePage() {
             </p>
           </motion.div>
         </div>
+
+        {/* 3. Infinite Scrolling Photo Gallery (Horizontal conveyor belt) */}
+        <AboutInfiniteGallery />
       </section>
     </div>
   );
