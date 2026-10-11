@@ -8,7 +8,6 @@ import PublicEventsPage from "./pages/PublicEventsPage";
 import AvianLifePage from "./pages/AvianLifePage";
 import VideosPage from "./pages/VideosPage";
 import AboutMePage from "./pages/AboutMePage";
-import CapabilitiesPage from "./pages/CapabilitiesPage";
 import CareersPage from "./pages/CareersPage";
 import ContactPage from "./pages/ContactPage";
 import { AdminProvider } from "./context/AdminContext";
@@ -39,9 +38,8 @@ function PageContent({ currentRoute }: { currentRoute: string }) {
     case "videos":
       return <VideosPage />;
     case "about-me":
-      return <AboutMePage />;
     case "capabilities":
-      return <CapabilitiesPage />;
+      return <AboutMePage />;
     case "careers":
       return <CareersPage />;
     case "contact":
